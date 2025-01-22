@@ -2,20 +2,15 @@
 
 import React, { useEffect, useState } from "react";
 import Card from "./Card";
+import { Article } from "../types/article";
 
-type FetchData = {
-  title: string;
-  author: string;
-  content: string;
-};
-
-export default function CardList() {
-  const [fetchData, setFetchData] = useState<FetchData[]>([]);
+export default function CSR() {
+  const [fetchData, setFetchData] = useState<Article[]>([]);
   console.log("fetchData :", fetchData);
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch("https://newsapi.org/v2/everything?q=bitcoin&apiKey=18dd71fdc316451cb6d11a9b8f703ab8");
+      const res = await fetch(`https://newsapi.org/v2/everything?q=bitcoin&apiKey=${process.env.NEXT_PUBLIC_NEWS_API_KEY}`);
       const { articles } = await res.json();
       console.log("data :", articles);
       setFetchData(articles);
@@ -25,7 +20,7 @@ export default function CardList() {
   }, []);
 
   return (
-    <div className="flex flex-col relative h-[800px] gap-6 p-10">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 relative h-[800px] gap-6 p-20">
       {fetchData.map((el, idx) => (
         <Card key={idx}>
           <Card.Title>{el.title}</Card.Title>

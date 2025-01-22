@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 
 export default function Card({ children }: { children: ReactNode }) {
   return (
-    <div className="flex flex-col gap-8 p-10 rounded-xl shadow-xl border-2">
+    <div className="flex flex-col gap-8 p-10 rounded-xl shadow-xl border-2 h-[550px] overflow-hidden">
       {/* 카드 컨테이너 안에 제목, 내용 등 컴파운드 컴포넌트 적용 */}
       {children}
     </div>
@@ -11,7 +11,7 @@ export default function Card({ children }: { children: ReactNode }) {
 
 function Title({ children }: { children: ReactNode }) {
   return (
-    <div className="font-bold text-2xl">
+    <div className="font-bold text-2xl ">
       {/* 제목 */}
       {children}
     </div>
@@ -29,7 +29,7 @@ function Author({ children }: { children: ReactNode }) {
 
 function Content({ children }: { children: ReactNode }) {
   return (
-    <div>
+    <div className="h-[170px] overflow-hidden">
       {/* 내용 */}
       {children}
     </div>
