@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import Card from "./Card";
 import { Article } from "../types/article";
 
-export default function CSR() {
+export default function CSRPage() {
   const [fetchData, setFetchData] = useState<Article[]>([]);
   console.log("fetchData :", fetchData);
 
